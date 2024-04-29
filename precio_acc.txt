@@ -1,0 +1,6 @@
+AUTO,Puertas,1000
+AUTO,Luces,600
+MOTO,Pedales,1000
+MOTO,Espejos,8000
+CAMION,Caja,10000
+CAMION,Ejes,8000

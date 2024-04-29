@@ -1,0 +1,11 @@
+rut,nombre,lf_desc_veh,lf_desc_acc,lf_cant_veh,lf_cant_acc,
+lf significa lifetime, para diferenciarlo de las variables usadas en la etapa de compra.
+19432781-j,Shotaru Kaneda,30000,3000,5,4,
+14911022-m,Rayo McQueen,100000,40000,20,6,
+15672531-j,Dominic Toretto,15000,30000,6,7,
+17911455-m,Maggie Peyton,25000,32000,5,12,
+12467812-m,Speed Racer,5000,1000,1,2,
+16420133-m,Annie Porter,82000,1000,8,1,
+9326157-j,Doc Hudson,40000,5000,5,2,
+18544369-m,Franklin Clinton,200000,3000,35,10,
+20551982-m,Sarah Connor,70000,12000,12,30,
