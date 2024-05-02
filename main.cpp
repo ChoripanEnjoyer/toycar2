@@ -10,7 +10,7 @@ int main()
     cliente* raiz_cliente=nullptr;
 
     
-    cargar_LD_clientes();
+    cargar_LD_clientes(raiz_cliente);
     mostrar_LD_clientes(raiz_cliente);
     destroy_LD_clientes(raiz_cliente);
 

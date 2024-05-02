@@ -46,7 +46,7 @@ cliente* LD_clientes(cliente* raiz_cliente, string crut, string cnombre, int d_v
     return raiz_cliente;
 }
 
-void destroy_LD_clientes(cliente *raiz_cliente)
+void destroy_LD_clientes(cliente* raiz_cliente)
 {
   if(raiz_cliente!=nullptr)
   {
@@ -67,9 +67,8 @@ void mostrar_LD_clientes(cliente* raiz_cliente)
 }
 
 //cargar lista de clientes
-cliente* cargar_LD_clientes() 
+cliente* cargar_LD_clientes(cliente* raiz_cliente) 
 {
-    cliente* raiz_cliente=nullptr;
     string archivo1 = "clientes.txt";
     ifstream archivo(archivo1.c_str());
     if (!archivo) 

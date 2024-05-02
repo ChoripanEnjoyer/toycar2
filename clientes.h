@@ -19,4 +19,4 @@ class cliente
 cliente* LD_clientes(cliente* raiz_cliente, string crut, string cnombre, int d_v, int d_a, int c_v, int c_a);
 void destroy_LD_clientes(cliente* raiz_cliente);
 void mostrar_LD_clientes(cliente* raiz_cliente);
-cliente* cargar_LD_clientes();
+cliente* cargar_LD_clientes(cliente* raiz_cliente);
