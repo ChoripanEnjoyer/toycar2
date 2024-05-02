@@ -67,8 +67,9 @@ void mostrar_LD_clientes(cliente* raiz_cliente)
 }
 
 //cargar lista de clientes
-cliente* cargar_LD_clientes(cliente* raiz_cliente) 
+cliente* cargar_LD_clientes() 
 {
+    cliente* raiz_cliente=nullptr;
     string archivo1 = "clientes.txt";
     ifstream archivo(archivo1.c_str());
     if (!archivo) 
