@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
-#include "accesorio.h"
+#include "Estructuras.h"
 using namespace std;
 
 
@@ -38,6 +38,38 @@ vector<Accesorio> leerAccesoriosDesdeArchivo(const string& nombre_archivo)
 
     return accesorios;
 }
+vector<precios_marcas> Leer_precios(const string& nombre_archivo)
+{
+    vector<precios_marcas> Precios_Marcas;
+    ifstream archivo(nombre_archivo);
+    string linea;
+
+    if (archivo.is_open()) 
+    {
+        while (getline(archivo, linea)) // lee cadenas de caracteres hasta que se encuentra un delimitador (aca la coma ,)
+        {
+            istringstream ss(linea);
+            string Tipo, nombre_marca;
+            int precio;
+
+            // Parsear los datos de la línea
+            if (getline(ss, Tipo, ',') && getline(ss, nombre_marca, ',') && (ss >> precio)) 
+            {
+                precios_marcas precio_marcas = {Tipo, nombre_marca, precio};// Crea el objeto Accesorio y agrega al vector
+                Precios_Marcas.push_back(precio_marcas); //es una función miembro de los vectores en C++, se utiliza para agregar un nuevo elemento al final del vector.
+            }
+        }
+        archivo.close();
+    } 
+    else 
+    {
+        cerr << "No se pudo abrir el archivo: " << nombre_archivo << endl;
+    }
+
+    return Precios_Marcas;
+    //{{"Tipo de veh", "Marca", valor},{"AUTO", "Hyunday", 16000},{"AUTO", "Susuki", 12000},}
+}
+
 
 void mostrarAccesorios(const vector<Accesorio>& accesorios) 
 {
@@ -62,3 +94,5 @@ void mostrarAccesorios(const vector<Accesorio>& accesorios)
 
     cout << "----------------------------------------------------" << endl;
 }
+
+

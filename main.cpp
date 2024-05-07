@@ -4,14 +4,17 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
-#include "accesorio.h"
+#include "Estructuras.h"
+#include "vehiculo.h"
+
 using namespace std;
 
 int main()
 {
-    string archivo = "precio_acc.txt";
-    vector<Accesorio> accesorios = leerAccesoriosDesdeArchivo(archivo);
-    mostrarAccesorios(accesorios);
+    vector<precios_marcas> precios = Leer_precios("precio_veh.txt");
+    vector<Accesorio> accesorios = leerAccesoriosDesdeArchivo("precio_acc.txt");
+    //mostrarAccesorios(accesorios);
 
     return 0;
 }
+

@@ -1,4 +1,8 @@
 #include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
 #include "vehiculo.h"
 using namespace std;
 
@@ -93,9 +97,4 @@ void Camion::pedir_datos()
     cin>>this-> cantidad_ejes;
     cout<<"Ingrese la cantidad de pedales: ";
     cin>>this-> cantidad_tolvas;
-}
-
-vector<Vehiculo*> leerPreciosDesdeArchivo(const string& nombre_archivo)
-{
-    
 }
