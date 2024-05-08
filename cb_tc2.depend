@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1715130229 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\main.cpp
+	<iostream>
+	"clientes.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<vector>
+	<iomanip>
+	"Estructuras.h"
+	"vehiculo.h"
+
+1715131273 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\met_client.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<vector>
+	"clientes.h"
+
+1715123702 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\clientes.h
+	<iostream>
+
+1715128929 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\estructuras.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<vector>
+	<iomanip>
+	"Estructuras.h"
+
+1715128847 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\estructuras.h
+	<vector>
+	<string>
+
+1715129058 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\vehiculo.h
+	<string>
+	<vector>
+
+1715129001 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\met_veh.cpp
+	<iostream>
+	<string>
+	<vector>
+	<fstream>
+	<sstream>
+	"vehiculo.h"
+
