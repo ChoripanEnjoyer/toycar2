@@ -1,4 +1,4 @@
-rut,nombre,lf_desc_veh,lf_desc_acc,lf_cant_veh,lf_cant_acc,
+rut,nombre,lf_desc_veh,lf_desc_acc,lf_cant_veh,lf_cant_acc,0,
 lf significa lifetime, para diferenciarlo de las variables usadas en la etapa de compra.
 19432781-j,Shotaru Kaneda,30000,3000,5,4,
 14911022-m,Rayo McQueen,100000,40000,20,6,
