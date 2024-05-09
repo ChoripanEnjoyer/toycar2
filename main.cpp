@@ -11,10 +11,10 @@ using namespace std;
 
 int main()
 {
-    vector<precios_marcas> precios = Leer_precios("precio_veh.txt");
+    
     vector<Accesorio> accesorios = leerAccesoriosDesdeArchivo("precio_acc.txt");
     //mostrarAccesorios(accesorios);
-
+    menu();
     return 0;
 }
 

@@ -87,12 +87,30 @@ void mostrarAccesorios(const vector<Accesorio>& accesorios)
     cout << "----------------------------------------------------" << endl;
 
     // Itera sobre cada accesorio en el vector y muestra sus detalles
-    for (const auto& accesorio : accesorios) 
+    for (const auto& accesorio : accesorios)// esto me autoconfundio mucho auto permite que el compilador determine automáticamente el tipo de una variable basándose en el tipo de la expresión a la que se está asignando.
     {
         cout << setw(15) << accesorio.Tipo << setw(20) << accesorio.nombre_acc << setw(10) << accesorio.Valor << endl;
     }
 
     cout << "----------------------------------------------------" << endl;
+}
+
+
+void mostrarMarcas(const vector<precios_marcas>& precios, const string& tipo_vehiculo)
+{
+    cout << "Marcas y precios de " << tipo_vehiculo << ":" << endl;
+
+    // Recorrer el vector de precios
+    for (const auto& precio : precios)
+    {
+        // Verificar si el tipo de vehículo coincide
+        if (precio.Tipo_vehiculo == tipo_vehiculo)
+        {
+            // Mostrar la marca y el precio
+            cout << "Marca: " << precio.Marca_vehiculo << ", Precio: " << precio.Precio_marca << endl;
+        }
+    }
+    cout << "--------------------------------" << endl;
 }
 
 

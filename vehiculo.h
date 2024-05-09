@@ -9,22 +9,16 @@ class Vehiculo
     string marca;
     bool control_remoto;
     int year_fabricacion;
-    Vehiculo(int ruedas, string mark, bool control, int ano_fab);
+    public:
+    Vehiculo(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab): cantidad_ruedas(crear_ruedas), marca(crear_mark), control_remoto(crear_control), year_fabricacion(crear_ano_fab) {}
     ~Vehiculo();
-    virtual void pedir_datos();
-    virtual void mostrar_datos();
-    Vehiculo *sig;
-
+    virtual Vehiculo* crearNuevoVehiculo();
+    // Getters
+    int get_cantidad_ruedas() const { return cantidad_ruedas; }
+    string get_marca() const { return marca; }
+    bool get_control_remoto() const { return control_remoto; }
+    int get_year_fabricacion() const { return year_fabricacion; }
 };
-
-// vector<Vehiculo*> leerPreciosDesdeArchivo(const string& nombre_archivo);
-void leerPreciosDesdeArchivo(const string& nombre_archivo);
-void solicitar_vehiculo_usuario();
-void insertar_vehiculo_en_lista();
-void escribirInfoVehiculos();
-
-
-
 
 class Auto: public Vehiculo
 {
@@ -32,9 +26,13 @@ class Auto: public Vehiculo
     int Cantidad_puertas;
     int Cantidad_luces;
     public:
-    Auto(int ruedas, string mark, bool control, int ano_fab,int puertas, int luces);
-    void pedir_datos();
+    Auto(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab, int crea_rueda, int crea_luz) : Vehiculo(crear_ruedas, crear_mark, crear_control, crear_ano_fab), Cantidad_puertas(crea_rueda), Cantidad_luces(crea_luz) {}
+    Auto* crearNuevoVehiculo();
+
     ~Auto();
+    // Getters 
+    int get_cantidad_puertas() const { return Cantidad_puertas; }
+    int get_cantidad_luces() const { return Cantidad_luces; }
 };
 
 class Moto: public Vehiculo
@@ -43,9 +41,15 @@ class Moto: public Vehiculo
     int cantidad_espejos;
     int cantidad_pedales;
     public:
-    Moto(int ruedas, string mark, bool control, int ano_fab, int espejos, int pedales);
-    void pedir_datos();
+    Moto(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab, int crea_espejo, int crea_pedal) : Vehiculo(crear_ruedas, crear_mark, crear_control, crear_ano_fab), cantidad_espejos(crea_espejo), cantidad_pedales(crea_pedal) {}
+    Moto* crearNuevoVehiculo();
+    void escribir_info(const Vehiculo& vehiculo);
     ~Moto();
+    //Getters
+    int getcantidad_espejos() const { return cantidad_espejos; }
+    int getcantidad_pedales() const { return cantidad_pedales; }
+    
+
 
 };
 
@@ -54,10 +58,16 @@ class Camion: public Vehiculo
     int cantidad_ejes;
     int cantidad_tolvas;
     public:
-    Camion(int ruedas, string mark, bool control, int ano_fab, int ejes, int tolvas);
-    void pedir_datos();
+    Camion(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab, int crea_eje, int crea_tolva) : Vehiculo(crear_ruedas, crear_mark, crear_control, crear_ano_fab),  cantidad_ejes(crea_eje), cantidad_tolvas(crea_tolva) {}
+    Camion* crearNuevoVehiculo();
+    void escribir_info(ofstream& fichero);
     ~Camion();
-};
+    //Getters
+    int getcantidad_ejes() const { return cantidad_ejes; }
+    int getcantidad_tolvas() const { return cantidad_tolvas; }
 
+};
+void mostrar_datos(const string& nombre_archivo);
+void menu();
 
 
