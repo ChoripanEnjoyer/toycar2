@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "Estructuras.h"
 using namespace std;
 
 class Vehiculo
@@ -9,8 +10,9 @@ class Vehiculo
     string marca;
     bool control_remoto;
     int year_fabricacion;
+    int precio;
     public:
-    Vehiculo(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab): cantidad_ruedas(crear_ruedas), marca(crear_mark), control_remoto(crear_control), year_fabricacion(crear_ano_fab) {}
+    Vehiculo(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab): cantidad_ruedas(crear_ruedas), marca(crear_mark), control_remoto(crear_control), year_fabricacion(crear_ano_fab),precio(0) {}
     ~Vehiculo();
     virtual Vehiculo* crearNuevoVehiculo();
     // Getters
@@ -18,6 +20,10 @@ class Vehiculo
     string get_marca() const { return marca; }
     bool get_control_remoto() const { return control_remoto; }
     int get_year_fabricacion() const { return year_fabricacion; }
+    int get_precio() const { return precio; }
+    // sett para modificar precio segun marca vehiculo
+    void set_cantidad_ruedas() const { cantidad_ruedas; }
+    void set_precio(int nuevo_precio) { precio = nuevo_precio; }
 };
 
 class Auto: public Vehiculo
@@ -26,7 +32,7 @@ class Auto: public Vehiculo
     int Cantidad_puertas;
     int Cantidad_luces;
     public:
-    Auto(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab, int crea_rueda, int crea_luz) : Vehiculo(crear_ruedas, crear_mark, crear_control, crear_ano_fab), Cantidad_puertas(crea_rueda), Cantidad_luces(crea_luz) {}
+    Auto(int crear_ruedas, string crear_mark, bool crear_control, int crear_ano_fab,int precio, int crea_puerta, int crea_luz) : Vehiculo(crear_ruedas, crear_mark, crear_control, crear_ano_fab), Cantidad_puertas(crea_puerta), Cantidad_luces(crea_luz) {}
     Auto* crearNuevoVehiculo();
 
     ~Auto();
@@ -68,6 +74,7 @@ class Camion: public Vehiculo
 
 };
 void mostrar_datos(const string& nombre_archivo);
-void menu();
+int contarVehiculos(const vector<Vehiculo*>& lista_vehiculos);
+vector<Vehiculo*> almacenarVehiculo(vector<Vehiculo*>& lista_vehiculos, Vehiculo* nuevo_vehiculo,vector<precios_marcas>& precios);
 
 
