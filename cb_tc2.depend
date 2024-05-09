@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1715130229 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\main.cpp
+1715226352 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\main.cpp
 	<iostream>
 	"clientes.h"
 	<iostream>
@@ -11,7 +11,7 @@
 	"Estructuras.h"
 	"vehiculo.h"
 
-1715131273 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\met_client.cpp
+1715225754 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\met_client.cpp
 	<iostream>
 	<fstream>
 	<sstream>
@@ -19,10 +19,10 @@
 	<vector>
 	"clientes.h"
 
-1715123702 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\clientes.h
+1715222700 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\clientes.h
 	<iostream>
 
-1715128929 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\estructuras.cpp
+1715195063 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\estructuras.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -31,15 +31,15 @@
 	<iomanip>
 	"Estructuras.h"
 
-1715128847 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\estructuras.h
+1715195063 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\estructuras.h
 	<vector>
 	<string>
 
-1715129058 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\vehiculo.h
+1715195063 c:\users\juan carlos carozzi\documents\toycar\cb_tc2\vehiculo.h
 	<string>
 	<vector>
 
-1715129001 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\met_veh.cpp
+1715195063 source:c:\users\juan carlos carozzi\documents\toycar\cb_tc2\met_veh.cpp
 	<iostream>
 	<string>
 	<vector>

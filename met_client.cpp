@@ -145,7 +145,7 @@ void mayor_cant(cliente* raiz_cliente, string nom_actual, int cant_veh_actual)
     }
     if (raiz_cliente->sig==nullptr)
     {
-        cout<<nom_actual <<" ha comprado mas vehiculos, con un total de: "<<cant_veh_actual<<" vehiculos."<<endl;
+        cout<<nom_actual <<" ha comprado mas vehiculos con un total de: "<<cant_veh_actual<<" vehiculos."<<endl;
         return;
     }
     mayor_cant(raiz_cliente->sig, nom_actual, cant_veh_actual);
@@ -167,7 +167,7 @@ void mayor_cant(cliente* raiz_cliente, string nom_actual, int cant_acc_actual, i
     }
     if (raiz_cliente->sig==nullptr)
     {
-        cout<<nom_actual <<" ha comprado mas accesorios, con un total de: "<<desc_acc_actual<<" pesos gastados en "<<cant_acc_actual<<" accesorios"<<endl;
+        cout<<nom_actual <<" ha comprado mas accesorios con un total de "<<desc_acc_actual<<" pesos gastados en "<<cant_acc_actual<<" accesorios"<<endl;
         return;
     }
 
@@ -176,7 +176,6 @@ void mayor_cant(cliente* raiz_cliente, string nom_actual, int cant_acc_actual, i
 
 void autos_vendidos(cliente* raiz_cliente, int veh_totales)
 {
-        cout<<"se abre ventas totales"<<raiz_cliente->nombre<<endl;
     if (raiz_cliente==nullptr)
     {
         cout<<"raiz nula"<<endl;
@@ -188,7 +187,7 @@ void autos_vendidos(cliente* raiz_cliente, int veh_totales)
     }
     if (raiz_cliente->sig==nullptr)
     {
-        cout<<"La cantidad de vehiculos vendidos es de: "<<veh_totales<<endl;
+        cout<<"La cantidad total de vehiculos vendidos es de: "<<veh_totales<<endl;
         return;
     }
     autos_vendidos(raiz_cliente->sig, veh_totales);
@@ -196,7 +195,6 @@ void autos_vendidos(cliente* raiz_cliente, int veh_totales)
 
 void autos_vendidos(cliente* raiz_cliente, int veh_totales, int cant_client)
 {
-    cout<<"se abre ventas promediacion"<<raiz_cliente->nombre<<endl;
     if (raiz_cliente==nullptr)
     {
         cout<<"raiz nula"<<endl;
@@ -209,10 +207,10 @@ void autos_vendidos(cliente* raiz_cliente, int veh_totales, int cant_client)
     }
     if (raiz_cliente->sig==nullptr)
     {
-        cout<<cant_client<<endl;
-        cout<<veh_totales<<endl;
+       // cout<<cant_client<<endl;
+       // cout<<veh_totales<<endl;
         int prom_veh=veh_totales/cant_client;
-        cout<<"El promedio de vehiculos vendidos es de: "<<prom_veh<<endl;
+        cout<<"Los clientes en promedio gastan "<<prom_veh<<" en vehiculos"<<endl;
         return;
     }
     autos_vendidos(raiz_cliente->sig, veh_totales, cant_client);
