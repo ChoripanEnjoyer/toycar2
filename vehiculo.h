@@ -4,7 +4,6 @@
 #include "Estructuras.h"
 using namespace std;
 
- 
 class Vehiculo {
 protected:
     int cantidad_ruedas;
@@ -20,8 +19,14 @@ public:
 
     string get_marca() const { return marca; }
     int get_precio() const { return precio; }
-    void setMarca() const { marca; }
-    void setPrecio() const { precio; }
+    virtual void setMarca(int new_marca)
+    {
+        marca = new_marca;
+    }
+    virtual void setPrecio(int new_precio) 
+    {
+        precio = new_precio;
+    }
 };
 
 class Auto : public Vehiculo {
@@ -31,11 +36,21 @@ protected:
     vector<Accesorio> accesorios;
 
 public:
-    Auto(int ruedas, string marca, bool control, int ano_fab, int precio, int puertas, int luces, const vector<Accesorio>& accs) : Vehiculo(ruedas, marca, control, ano_fab, precio), cantidad_puertas(puertas), cantidad_luces(luces), accesorios(accs) {}
+    Auto(int ruedas, string marca, bool control, int ano_fab, int precio, int puertas, int luces) : Vehiculo(ruedas, marca, control, ano_fab, precio), cantidad_puertas(puertas), cantidad_luces(luces){}
 
     virtual ~Auto() {}
+        // Getters 
+    int get_cantidad_puertas() const { return cantidad_ruedas; }
+    int get_cantidad_luces() const { return cantidad_luces; }
+    void setPuertas(int puertas) 
+    {
+        cantidad_puertas = puertas;
+    }
 
-
+    void setLuces(int luces) 
+    {
+        cantidad_luces = luces;
+    }
 };
 
 class Moto : public Vehiculo {
@@ -49,7 +64,11 @@ public:
         : Vehiculo(ruedas, marca, control, ano_fab, precio), cantidad_pedales(pedales), cantidad_espejos(espejos) {}
 
     virtual ~Moto() {}
-
+    //Getters
+    int getcantidad_espejos() const { return cantidad_espejos; }
+    int getcantidad_pedales() const { return cantidad_pedales; }
+    void setespejo() const { cantidad_espejos; }
+    void setpedal() const { cantidad_pedales; }
 };
 
 class Camion : public Vehiculo {
@@ -61,6 +80,11 @@ public:
     Camion(int ruedas,string marca, bool control, int ano_fab, int precio,int caja, int ejes): Vehiculo(ruedas, marca, control, ano_fab, precio), cantidad_Tolvas(caja), cantidad_ejes(ejes) {}
 
     virtual ~Camion() {}
+    //Getters
+    int getcantidad_ejes() const { return cantidad_ejes; }
+    int getcantidad_tolvas() const { return cantidad_Tolvas; }
+    void settolva() const { cantidad_Tolvas; }
+    void seteje() const { cantidad_ejes; }
 
 };
 void mostrar_datos(const string& nombre_archivo);

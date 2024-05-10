@@ -42,6 +42,7 @@ int main()
     int cant_acc_actual=cliente_actual->cant_acc;
     int desc_acc_actual=cliente_actual->desc_acc;
     int cantidad_veh = 0;
+    string marca_seleccionada;
     cout << "Bienvenido al sistema de venta de Toyscar." << endl;
 
     while (opcion != 4) 
@@ -57,43 +58,79 @@ int main()
 
         switch (opcion) 
         {
+            
             case 1:
             {
-                cout << "Seleccione la marca de auto que desea comprar:" << endl;
                 mostrarMarcas(precios, "AUTO");
-                
-                string marca_seleccionada;
-                cout << "Ingrese la marca seleccionada: ";
+                cout << "Seleccione la marca de auto que desea comprar:" << endl;
+
                 cin >> marca_seleccionada;
                 int cantidad_autos = 0;
-                Auto* nuevo_auto = new Auto(4, marca_seleccionada, false, 2022, 0, 4,2, Accesorios);
+                Auto* nuevo_auto = new Auto(4, marca_seleccionada, false, 2022, 0, 4,2);
                 cout <<"cuantos autos"<<marca_seleccionada<<"quiere comprar: ";
                 cin>> cantidad_autos;
                 cantidad_veh += cantidad_autos;
                 cant_veh_actual = cantidad_veh;
+                cout <<"¿Cuántas puertas quiere el auto? ";
+                int cantidad_puertas;
+                cin >> cantidad_puertas;
+                nuevo_auto->setPuertas(cantidad_puertas);
+
+                cout <<"¿Cuántas luces quiere el auto? ";
+                int cantidad_luces;
+                cin >> cantidad_luces;
+                nuevo_auto->setLuces(cantidad_luces);
                 
                 lista_vehiculos = almacenarVehiculo(lista_vehiculos, nuevo_auto, precios);
-                calcularMontoTotal(precios, "AUTO",marca_seleccionada,cant_veh);
+                calcularMontoTotal(precios, "AUTO",marca_seleccionada,cantidad_veh);
 
             
                 break;
             }
 
             case 2:
+            {
                 mostrarMarcas(precios, "MOTO");
-
+                cout << "Seleccione la marca de auto que desea comprar:" << endl;
+                cin >> marca_seleccionada;
+                int cantidad_motos = 0;
+                Vehiculo* new_moto = new Moto(2, marca_seleccionada, false, 2022, 0, 4,2);
+                cout <<"cuantos autos"<<marca_seleccionada<<"quiere comprar: ";
+                cin>> cantidad_motos;
+                cantidad_veh += cantidad_motos;
+                cant_veh_actual = cantidad_veh;
+                
+                lista_vehiculos = almacenarVehiculo(lista_vehiculos, new_moto, precios);
+                calcularMontoTotal(precios, "MOTO",marca_seleccionada,cantidad_veh);
                 break;
+            }
             case 3:
-
+            {
+                cout << "Seleccione la marca de auto que desea comprar:" << endl;
                 mostrarMarcas(precios, "CAMION");
 
+                cout << "Ingrese la marca seleccionada: ";
+                cin >> marca_seleccionada;
+                int cantidad_camion = 0;
+                Camion *new_camion = new Camion(6, marca_seleccionada, false, 2022, 0, 4,2);
+                cout <<"cuantos autos"<<marca_seleccionada<<"quiere comprar: ";
+                cin>> cantidad_camion;
+                cantidad_veh += cantidad_camion;
+                cant_veh_actual = cantidad_veh;
+                
+                lista_vehiculos = almacenarVehiculo(lista_vehiculos, new_camion, precios);
+                calcularMontoTotal(precios, "CAMION",marca_seleccionada,cantidad_veh);
                 break;
+            }
             case 4:
-
+            {
                 break;
+            }
             default:
+            {
                 cout << "Opción no válida. Por favor, elija una opción válida." << endl;
                 break;
+            }
         }
     }
 
