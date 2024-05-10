@@ -7,7 +7,6 @@
 #include "Estructuras.h"
 using namespace std;
 
-
 vector<Accesorio> leerAccesoriosDesdeArchivo(const string& nombre_archivo)
 {
     vector<Accesorio> accesorios;
@@ -112,5 +111,4 @@ void mostrarMarcas(const vector<precios_marcas>& precios, const string& tipo_veh
     }
     cout << "--------------------------------" << endl;
 }
-
 
