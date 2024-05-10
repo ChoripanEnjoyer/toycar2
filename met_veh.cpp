@@ -10,7 +10,7 @@
 vector<Vehiculo*> almacenarVehiculo(vector<Vehiculo*>& lista_vehiculos, Vehiculo* nuevo_vehiculo,vector<precios_marcas>& precios) 
 {
     lista_vehiculos.push_back(nuevo_vehiculo);
-    //sacamos el valor ahoora
+
     string marca = nuevo_vehiculo->get_marca();
     string tipo_vehiculo;
     if( tipo_vehiculo=="AUTO")
@@ -19,7 +19,7 @@ vector<Vehiculo*> almacenarVehiculo(vector<Vehiculo*>& lista_vehiculos, Vehiculo
         {
             if(precio.Tipo_vehiculo == tipo_vehiculo && precio.Marca_vehiculo == marca)
             {
-                nuevo_vehiculo->setPrecio();
+                nuevo_vehiculo->setPrecio(precio.Precio_marca);
                 break;
             }
         }
@@ -30,7 +30,7 @@ vector<Vehiculo*> almacenarVehiculo(vector<Vehiculo*>& lista_vehiculos, Vehiculo
         {
             if(precio.Tipo_vehiculo == tipo_vehiculo && precio.Marca_vehiculo == marca)
             {
-                nuevo_vehiculo->setPrecio();
+                nuevo_vehiculo->setPrecio(precio.Precio_marca);
                 break;
             }
         }
@@ -41,7 +41,7 @@ vector<Vehiculo*> almacenarVehiculo(vector<Vehiculo*>& lista_vehiculos, Vehiculo
         {
             if(precio.Tipo_vehiculo == tipo_vehiculo && precio.Marca_vehiculo == marca)
             {
-                nuevo_vehiculo->setPrecio();
+                nuevo_vehiculo->setPrecio(precio.Precio_marca);
                 break;
             }
         }
@@ -54,7 +54,8 @@ int contarVehiculos(const vector<Vehiculo*>& lista_vehiculos,int cantidad_veh)
 {
     return lista_vehiculos.size()*cantidad_veh;
 }
-void mostrarListaVehiculos(const vector<Vehiculo*>& lista_vehiculos) {
+void mostrarListaVehiculos(const vector<Vehiculo*>& lista_vehiculos) 
+{
     cout << "Lista de vehículos disponibles:" << endl;
     cout << "--------------------------------" << endl;
     int index = 1;
@@ -67,17 +68,20 @@ void mostrarListaVehiculos(const vector<Vehiculo*>& lista_vehiculos) {
     }
 }
 
-int calcularMontoTotal(vector<precios_marcas>& precios, string tipo_vehiculo, string marca_seleccionada, int cant_vehi) 
+int calcularMontoTotal(const vector<precios_marcas>& precios, const vector<Vehiculo*>& lista_vehiculos) 
 {
     int precio_total = 0;
 
-    if (tipo_vehiculo == "AUTO" || tipo_vehiculo == "MOTO" || tipo_vehiculo == "CAMION")
-    {
-        for (const auto& precio : precios)
+    for (const auto& vehiculo : lista_vehiculos) {
+        
+        string marca = vehiculo->get_marca();
+        string tipo_vehiculo = typeid(*vehiculo).name(); // pasa el tipo de vehículo como string
+
+        // Buscar el precio correspondiente en la lista de precios
+        for (const auto& precio : precios) 
         {
-            if (precio.Tipo_vehiculo == tipo_vehiculo && precio.Marca_vehiculo == marca_seleccionada)
-            {
-                precio_total = precio.Precio_marca * cant_vehi; // Calcula el precio total de la operación
+            if (precio.Tipo_vehiculo == tipo_vehiculo && precio.Marca_vehiculo == marca) {
+                precio_total += precio.Precio_marca;
                 break;
             }
         }

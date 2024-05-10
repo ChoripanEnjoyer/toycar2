@@ -70,7 +70,7 @@ vector<precios_marcas> Leer_precios(const string& nombre_archivo)
 }
 
 
-void mostrarAccesorios(const vector<Accesorio>& accesorios) 
+void mostrarAccesorioscompra(const vector<Accesorio>& accesorios) 
 {
 
     if (accesorios.empty()) 
@@ -112,3 +112,50 @@ void mostrarMarcas(const vector<precios_marcas>& precios, const string& tipo_veh
     cout << "--------------------------------" << endl;
 }
 
+vector<Accesorio> almacenarAccesorios(vector<Accesorio>& lista_accesorios, const vector<Accesorio>& accesorios_cliente) 
+{
+    for(const auto& accesorio_cliente : accesorios_cliente) 
+    {
+        bool encontrado = false;
+        for(auto& accesorio : lista_accesorios) 
+        {
+            if(accesorio.nombre_acc == accesorio_cliente.nombre_acc) 
+            {
+                // Sumar la cantidad del accesorio existente
+                accesorio.cantidad += accesorio_cliente.cantidad;
+                encontrado = true;
+                break;
+            }
+        }
+        
+        // Si el accesorio no está en la lista, añadirlo
+        if(!encontrado) 
+        {
+            lista_accesorios.push_back(accesorio_cliente);
+        }
+    }
+    
+    return lista_accesorios;
+}
+
+
+void mostrarAccesorios(const vector<Accesorio>& lista_accesorios) 
+{
+    cout << "Lista de Accesorios:" << endl;
+    for(const auto& accesorio : lista_accesorios) 
+    {
+        cout << "Nombre: " << accesorio.nombre_acc << ", Cantidad: " << accesorio.cantidad << ", Precio Unitario: " << accesorio.Valor << endl;
+    }
+}
+
+
+// Función para calcular el monto total de los accesorios
+int calcularMontoTotalAccesorios(const vector<Accesorio>& lista_accesorios) 
+{
+    int monto_total = 0;
+    for(const auto& accesorio : lista_accesorios) 
+    {
+        monto_total += accesorio.cantidad * accesorio.Valor;
+    }
+    return monto_total;
+}

@@ -67,8 +67,15 @@ public:
     //Getters
     int getcantidad_espejos() const { return cantidad_espejos; }
     int getcantidad_pedales() const { return cantidad_pedales; }
-    void setespejo() const { cantidad_espejos; }
-    void setpedal() const { cantidad_pedales; }
+    void setpedal(int pedales) 
+    {
+        cantidad_pedales = pedales;
+    }
+
+    void setespejo(int espejos) 
+    {
+        cantidad_espejos = espejos;
+    }
 };
 
 class Camion : public Vehiculo {
@@ -83,12 +90,20 @@ public:
     //Getters
     int getcantidad_ejes() const { return cantidad_ejes; }
     int getcantidad_tolvas() const { return cantidad_Tolvas; }
-    void settolva() const { cantidad_Tolvas; }
-    void seteje() const { cantidad_ejes; }
+    void seteje(int caja) 
+    {
+        cantidad_Tolvas = caja;
+    }
 
+    void settolva(int ejes) 
+    {
+        cantidad_ejes = ejes;
+    }
 };
 void mostrar_datos(const string& nombre_archivo);
 int contarVehiculos(const vector<Vehiculo*>& lista_vehiculos);
 vector<Vehiculo*> almacenarVehiculo(vector<Vehiculo*>& lista_vehiculos, Vehiculo* nuevo_vehiculo,vector<precios_marcas>& precios);
 void mostrarListaVehiculos(const vector<Vehiculo*>& lista_vehiculos);
-int calcularMontoTotal(vector<precios_marcas>& precios, string tipo_vehiculo, string marca_seleccionada, int cant_vehi);
+int calcularMontoTotal(const vector<precios_marcas>& precios, const vector<Vehiculo*>& lista_vehiculos);
+int calcularMontoTotalAccesorios(const vector<Accesorio>& lista_accesorios);
+

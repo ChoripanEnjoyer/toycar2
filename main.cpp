@@ -25,6 +25,7 @@ int main()
     vector<precios_marcas> precios = Leer_precios("precio_veh.txt");
     vector<Accesorio> Accesorios = leerAccesoriosDesdeArchivo("acc.txt");
     vector<Vehiculo*> lista_vehiculos;
+    vector<Accesorio*> accesorios_cliente;
     //cliente actual
     cout<<"--checking rut--"<<endl;
     string rut_dado= "20551982-m";
@@ -42,6 +43,7 @@ int main()
     int cant_acc_actual=cliente_actual->cant_acc;
     int desc_acc_actual=cliente_actual->desc_acc;
     int cantidad_veh = 0;
+    int monto_total = 0;
     string marca_seleccionada;
     cout << "Bienvenido al sistema de venta de Toyscar." << endl;
 
@@ -58,7 +60,7 @@ int main()
 
         switch (opcion) 
         {
-            
+
             case 1:
             {
                 mostrarMarcas(precios, "AUTO");
@@ -66,64 +68,91 @@ int main()
 
                 cin >> marca_seleccionada;
                 int cantidad_autos = 0;
-                Auto* nuevo_auto = new Auto(4, marca_seleccionada, false, 2022, 0, 4,2);
-                cout <<"cuantos autos"<<marca_seleccionada<<"quiere comprar: ";
+                cout <<"cuantos autos "<<marca_seleccionada<<" quiere comprar: ";
                 cin>> cantidad_autos;
-                cantidad_veh += cantidad_autos;
-                cant_veh_actual = cantidad_veh;
-                cout <<"¿Cuántas puertas quiere el auto? ";
-                int cantidad_puertas;
-                cin >> cantidad_puertas;
-                nuevo_auto->setPuertas(cantidad_puertas);
-
-                cout <<"¿Cuántas luces quiere el auto? ";
-                int cantidad_luces;
-                cin >> cantidad_luces;
-                nuevo_auto->setLuces(cantidad_luces);
-                
-                lista_vehiculos = almacenarVehiculo(lista_vehiculos, nuevo_auto, precios);
-                calcularMontoTotal(precios, "AUTO",marca_seleccionada,cantidad_veh);
-
+                for (int i = 0; i < cantidad_autos; ++i) 
+                {
+                    Auto* nuevo_auto = new Auto(4, marca_seleccionada, false, 2022, 0, 4, 2);
             
+                    cout << "¿Cuántas puertas quiere el auto " << i + 1 << "?: ";
+                    int cantidad_puertas;
+                    cin >> cantidad_puertas;
+                    nuevo_auto->setPuertas(cantidad_puertas);
+            
+                    cout << "¿Cuántas luces quiere el auto " << i + 1 << "?: ";
+                    int cantidad_luces;
+                    cin >> cantidad_luces;
+                    nuevo_auto->setLuces(cantidad_luces);
+            
+                    lista_vehiculos = almacenarVehiculo(lista_vehiculos, nuevo_auto, precios);
+                    int monto_total_auto = calcularMontoTotal(precios, lista_vehiculos);
+                    monto_total += monto_total_auto;
+                }
+
                 break;
+
             }
 
             case 2:
             {
                 mostrarMarcas(precios, "MOTO");
-                cout << "Seleccione la marca de auto que desea comprar:" << endl;
+                cout << "Seleccione la marca de moto que desea comprar: " << endl;
+
                 cin >> marca_seleccionada;
                 int cantidad_motos = 0;
-                Vehiculo* new_moto = new Moto(2, marca_seleccionada, false, 2022, 0, 4,2);
-                cout <<"cuantos autos"<<marca_seleccionada<<"quiere comprar: ";
+                cout <<"cuantas motos "<<marca_seleccionada<<" quiere comprar: ";
                 cin>> cantidad_motos;
-                cantidad_veh += cantidad_motos;
-                cant_veh_actual = cantidad_veh;
-                
-                lista_vehiculos = almacenarVehiculo(lista_vehiculos, new_moto, precios);
-                calcularMontoTotal(precios, "MOTO",marca_seleccionada,cantidad_veh);
+                for (int i = 0; i < cantidad_motos; ++i) 
+                {
+                    Moto* nueva_moto = new Moto(2, marca_seleccionada, false, 2022, 0, 4,2);
+            
+                    cout << "¿Cuántos pedales quiere la moto " << i + 1 << "?: ";
+                    int cantidad_pedales;
+                    cin >> cantidad_pedales;
+                    nueva_moto->setpedal(cantidad_pedales);
+            
+                    cout << "¿Cuántos espejos  quiere la moto" << i + 1 << "?: ";
+                    int cantidad_espejos;
+                    cin >> cantidad_espejos;
+                    nueva_moto->setespejo(cantidad_espejos);
+            
+                    lista_vehiculos = almacenarVehiculo(lista_vehiculos, nueva_moto, precios);
+                }
+                int monto_total_moto = calcularMontoTotal(precios, lista_vehiculos);
+                monto_total += monto_total_moto;
                 break;
             }
             case 3:
             {
-                cout << "Seleccione la marca de auto que desea comprar:" << endl;
                 mostrarMarcas(precios, "CAMION");
+                cout << "Seleccione la marca de camion que desea comprar: " << endl;
 
-                cout << "Ingrese la marca seleccionada: ";
                 cin >> marca_seleccionada;
-                int cantidad_camion = 0;
-                Camion *new_camion = new Camion(6, marca_seleccionada, false, 2022, 0, 4,2);
-                cout <<"cuantos autos"<<marca_seleccionada<<"quiere comprar: ";
-                cin>> cantidad_camion;
-                cantidad_veh += cantidad_camion;
-                cant_veh_actual = cantidad_veh;
-                
-                lista_vehiculos = almacenarVehiculo(lista_vehiculos, new_camion, precios);
-                calcularMontoTotal(precios, "CAMION",marca_seleccionada,cantidad_veh);
+                int cantidad_camiones = 0;
+                cout <<"cuantos camiones "<<marca_seleccionada<<" quiere comprar: ";
+                cin>> cantidad_camiones;
+                for (int i = 0; i < cantidad_camiones; ++i) 
+                {
+                    Camion* nuevo_camion = new Camion(6, marca_seleccionada, false, 2022, 0, 4,2);
+            
+                    cout << "¿Cuántas cajas quiere el camion " << i + 1 << "?: ";
+                    int cantidad_cajas;
+                    cin >> cantidad_cajas;
+                    nuevo_camion->settolva(cantidad_cajas);
+            
+                    cout << "¿Cuántos ejes quiere el camion" << i + 1 << "?:  ";
+                    int cantidad_ejes;
+                    cin >> cantidad_ejes;
+                    nuevo_camion->seteje(cantidad_cajas);
+                    lista_vehiculos = almacenarVehiculo(lista_vehiculos, nuevo_camion, precios);
+                }
+                int monto_total_camion = calcularMontoTotal(precios, lista_vehiculos);
+                monto_total += monto_total_camion;
                 break;
+
             }
             case 4:
-            {
+            {   cout << "el monto total  es: "<<monto_total<<endl;
                 break;
             }
             default:
@@ -134,7 +163,11 @@ int main()
         }
     }
 
-
+    monto_total = calcularMontoTotal(precios, lista_vehiculos);
+    cout << "Lista de vehículos:" << endl;
+    mostrarListaVehiculos(lista_vehiculos);
+    cout << "El monto total es: " << monto_total << endl;
+    
     //mayor cliente de vehiculos
     mayor_cant(raiz_cliente, nom_actual, cant_veh_actual);
 
